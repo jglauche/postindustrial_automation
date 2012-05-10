@@ -1,0 +1,9 @@
+Washer feeding
+--------------------
+
+For this project, I used a hopper that ejects coins and is usually used in a slot machine. It is called a "cube hopper mk2".
+The default payout disk (type 99) would work out of the box for feeding large M8 washers. 
+
+The custom payout disk that is printed should be able to feed normal washers.
+
+
