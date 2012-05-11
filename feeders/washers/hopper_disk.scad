@@ -1,7 +1,7 @@
 
 
 motor_shaft=10.5;
-motor_bar_width=3;
+motor_bar_width=2.9;
 motor_bar_length=18;
 
 bushing_depth = 2.3;
@@ -22,9 +22,9 @@ difference(){
 	#translate(v=[0,0,7.5]) cube(size=[motor_bar_width, motor_bar_length,5], center=true);
 	
 	for (i = [0:5]) {
-		rotate(a=60*i, v=[0,0,1]) translate(v=[35,-2.5,0]) cylinder(r=hole_dia/2, h=total_height);
-		for(f=[1:20]){
-			rotate(a=60*i-f*2, v=[0,0,1]) translate(v=[35+f,-2.5-f,total_height-2]) cylinder(r=hole_dia/2, h=total_height);
+		rotate(a=60*i, v=[0,0,1]) translate(v=[39,-2.5,0]) cylinder(r=hole_dia/2, h=total_height);
+		for(f=[1:15]){
+			rotate(a=60*i-f*2, v=[0,0,1]) translate(v=[39+f,-2.5-f,total_height-2]) cylinder(r=hole_dia/2, h=total_height);
 		}
 	}	
 
