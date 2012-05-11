@@ -7,3 +7,10 @@ The default payout disk (type 99) would work out of the box for feeding large M8
 The custom payout disk that is printed should be able to feed normal washers.
 
 
+Notes:
+1. The internal electronics in this hopper isn't made for continuous operation. 
+   As the TIP120 gets warm, the motor gets slower and finally stalls. The device can shoot out about 60-70 washers until it stops.
+   After it cooled a bit, it can resume operation normally.
+
+
+  
