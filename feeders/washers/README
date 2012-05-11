@@ -11,6 +11,7 @@ Notes:
 1. The internal electronics in this hopper isn't made for continuous operation. 
    As the TIP120 gets warm, the motor gets slower and finally stalls. The device can shoot out about 60-70 washers until it stops.
    After it cooled a bit, it can resume operation normally.
+2. Putting 24V directly on the motor will cause a printed hopped disk to break at the motor mount. Seems like the motor should be run at about 18V.
 
 
   
