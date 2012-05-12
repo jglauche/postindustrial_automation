@@ -14,6 +14,7 @@ Notes:
 - Putting 24V directly on the motor will cause a printed hopped disk to break at the motor mount. Seems like the motor should be run at about 18V.
 - Looks like driving the motor directly is no good idea. The jam-detection the the internal circuit board makes sense. 
 - letting it cool for ~30 seconds after each 50 washers ejected seems to cope with the overheat problem.
+- I made a 10mm hexagon brass insert for the motor shaft, drilled up to 5,5mm and secured with a grub screw. This should get rid of any wear at that point.
 
 
  
