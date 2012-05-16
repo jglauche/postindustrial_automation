@@ -10,7 +10,7 @@ module tslot(
 ){
 	start=thickness/sqrt(2);
 	if(nut){
-		linear_extrude(height=10)
+		linear_extrude(height=length)
 		intersection(){
 			polygon([[size/2-gap/2,0],[size/2-gap/2,thickness],[thickness+start,thickness],[size/2,size/2-2],[size-thickness-start,thickness],[size/2+gap/2,thickness],[size/2+gap/2,0]]);
 			square([size,size/2-(gap+thickness)/2]);
