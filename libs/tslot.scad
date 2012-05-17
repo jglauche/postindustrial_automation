@@ -10,10 +10,12 @@ module tslot(
 ){
 	start=thickness/sqrt(2);
 	if(nut){
-		linear_extrude(height=length)
-		intersection(){
-			polygon([[size/2-gap/2,0],[size/2-gap/2,thickness],[thickness+start,thickness],[size/2,size/2-2],[size-thickness-start,thickness],[size/2+gap/2,thickness],[size/2+gap/2,0]]);
-			square([size,size/2-(gap+thickness)/2]);
+		scale(v=[0.9,0.9,1]){
+			linear_extrude(height=length)
+			intersection(){
+				polygon([[size/2-gap/2,0],[size/2-gap/2,thickness],[thickness+start,thickness],[size/2,size/2-2],[size-thickness-start,thickness],[size/2+gap/2,thickness],[size/2+gap/2,0]]);
+				square([size,size/2-(gap+thickness)/2]);
+			}
 		}
 	}	
 	else{
@@ -33,6 +35,8 @@ module tslot(
 		}
 	}
 }
+
+
 module tslot20(length,nut){
 	tslot(size=20,gap=5.26,thickness=1.5,length=length,nut=nut);
 }
@@ -46,3 +50,28 @@ module tslot30_3060(length,nut){
 		tslot30(length,nut);
 	}
 }
+
+
+tslot20holes(100);
+
+module tslot20holes(length,nut){
+	difference(){
+		tslot(size=20,gap=5.26,thickness=1.5,length=length,nut=nut);
+		for(i=[0:(length/10)-2]){	
+			translate(v=[10,25,10+i*10]) rotate(a=90,v=[1,0,0]) cylinder(r=2,h=30);
+			translate(v=[-10,10,i*10+5]) rotate(a=90,v=[0,1,0]) cylinder(r=2,h=30);
+		}
+		translate(v=[-10,10,floor(length/10)*10-5]) rotate(a=90,v=[0,1,0]) cylinder(r=2,h=30);
+	}
+}
+
+
+
+module nut_test(){
+	union(){
+		tslot20(30,true);
+		translate([18,0,0]) rotate(a=180,v=[0,0,1]) tslot20(30,true);
+	
+	}
+}
+
