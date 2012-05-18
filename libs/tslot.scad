@@ -70,17 +70,18 @@ module mounted_nut(length){
 		tslot20(length,true);
 
 		for(i=[0:length/20]){
-			translate([6.2,1,i*20+8]) cube([10,2.3,5.6]);
+			translate([6.0,1,i*20+8]) cube([10,2.3,6]);
 			// overhang fix
 			translate([12,1,5+i*20+4]) rotate(a=-45,v=[0,1,0]) cube([15,2.3,5.6]);
-			translate([6.2,1,i*20+5]){	
-				cube([5.6,2.3,5.6]);
-				translate([5.6/2,10,5.6/2]) rotate(a=90,v=[1,0,0]) cylinder(r=1.8,h=10); 
+			translate([6,1,i*20+5]){	
+				cube([6,2.3,6]);
+				translate([6/2,10,6/2]) rotate(a=90,v=[1,0,0]) cylinder(r=2.3,h=10); 
 			}
 		}
 	}
 }
 
-
+//tslot20holes(150);
+//mounted_nut(40);
 
 
