@@ -1,23 +1,28 @@
 include<../../libs/nema17_motor.scad>
 include<../../libs/tslot.scad>
 
-total_height =10+8;
+total_height =8+10; // last parameter is bolt length
 outer_diameter = 60;
 hole_dia=10;
 
-//rotate(a=90,v=[0,1,0]) 
+rotate(a=90,v=[0,1,0]) 
 case();
 
-translate(v=[1,0,35]) wheel();
+//translate(v=[1,0,35]) wheel();
 
-rotate(a=90,v=[0,1,0]) translate([-22,24,-40]) tslot20holes(100);
+//rotate(a=90,v=[0,1,0]) translate([-22,24,-40]) tslot20holes(100);
 //rotate(a=90,v=[0,1,0])
-translate(v=[1,-2,7]) motor_mount();	
+//translate(v=[1,-2,7]) motor_mount();	
+
+
+//hopper();
+
+
 
 module motor_mount(){
 	difference(){	
 		union(){
-			translate(v=[-5,29,4.5]) cube(size=[42+30,6.5,5], center=true);	 
+			#translate(v=[-5,29.5,4.5]) cube(size=[42+30,7.0,5], center=true);	 
 			translate(v=[-5,1,20]) cube(size=[42+30,42+10,9], center=true);	 
 			translate(v=[-5,21,2+18/2]) cube(size=[42+30,10,18], center=true);	 
 		}
@@ -48,7 +53,10 @@ module motor_mount(){
 	}
 }
 
-
+module hopper(){
+	
+	
+}
 module case(){
 	translate(v=[0,0,23]){
 		union(){
@@ -67,32 +75,8 @@ module case(){
 					translate(v=[-15,28,11+(total_height+1)/2]) rotate(a=25,v=[0,0,1]) translate(v=[-15,10,0]) cube(size=[70,140,total_height-3], center=true);
 				
 					translate(v=[-50,95,0+(total_height+1)/2-1]) rotate(a=-15,v=[0,10,0]) cube(size=[70,120,8], center=true);
-				
-	
-
 				}				
 
-	
-
-/*
-				// nema 17 motor mount	
-				cylinder(r=12,h=10);
-				translate(v=[-25,-10,0]) cube(size=[20,20,10]);			
-
-				translate(v=[0,0,0]){	
-					translate([motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=15);
-					translate([motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=15);
-					translate([-motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=15);
-					translate([-motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=15);
-				}
-				// holes for screw heads
-				translate(v=[0,0,6]){	
-					translate([motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=3.5,h=15);
-					translate([motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=3.5,h=15);
-					translate([-motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=3.5,h=15);
-					translate([-motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=3.5,h=15);
-				}
-*/
 
 			}
 
