@@ -34,7 +34,7 @@ scale_plate_height_max = 14;
 rotate(a=180,v=[1,0,0]){
 	difference(){		
 		 scale();
-		 translate([5,-(post_y+20)/2,0]) cube([post_x/2,post_y+40,100]);
+		 #translate([0,-(post_y+20)/2,0]) cube([post_x/2+5,post_y+40,100]);
 	}
 
 }
