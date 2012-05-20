@@ -14,7 +14,7 @@ container_y = 99;
 container_z = 40;
 
 
-scale_plate_diameter = 116;
+scale_plate_diameter = 116+7;
 
 post_height = 3;
 scale_plate_height_min = 12;
@@ -29,7 +29,16 @@ scale_plate_height_max = 14;
 //	 translate([0,-70,-50]) tslot20holes(100);
 //}
 
-rotate(a=180,v=[1,0,0]) scale();
+
+// make 2 parts for easier printing
+rotate(a=180,v=[1,0,0]){
+	difference(){		
+		 scale();
+		 translate([5,-(post_y+20)/2,0]) cube([post_x/2,post_y+40,100]);
+	}
+
+}
+
 
 module scale(){
 	difference(){
@@ -40,12 +49,12 @@ module scale(){
 
 		// tslot mounts
 		translate([-65,0,0]){
-			for(i=[0,1,2,3,6,7,8,9]){
-				translate(v=[i*15,60,0]){
+			for(i=[0,1,2,3,4,9,10,11,12,13]){
+				translate(v=[i*10,60,0]){
 					cylinder(r=2,h=20);
 					translate(v=[0,0,post_height+1]) hexagon(5.8,4);
 				}				
-				translate(v=[i*15,-60,0]){
+				translate(v=[i*10,-60,0]){
 				 		cylinder(r=2,h=20);
 						translate(v=[0,0,post_height+1]) hexagon(5.8,4);
 				}
