@@ -16,7 +16,7 @@ container_z = 40;
 
 scale_plate_diameter = 116+7;
 
-post_height = 3;
+post_height = 3+3;
 scale_plate_height_min = 12;
 scale_plate_height_max = 14;
 
@@ -34,7 +34,7 @@ scale_plate_height_max = 14;
 rotate(a=180,v=[1,0,0]){
 	difference(){		
 		 scale();
-		 #translate([0,-(post_y+20)/2,0]) cube([post_x/2+5,post_y+40,100]);
+		 translate([0,-(post_y+20)/2,0]) cube([post_x/2+5,post_y+40,100]);
 	}
 
 }
