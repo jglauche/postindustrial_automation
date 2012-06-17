@@ -10,7 +10,7 @@ module tslot(
 ){
 	start=thickness/sqrt(2);
 	if(nut){
-		scale(v=[0.9,0.9,1]){
+		scale(v=[0.8,0.75,1]){
 			linear_extrude(height=length)
 			intersection(){
 				polygon([[size/2-gap/2,-30],[size/2-gap/2,thickness],[thickness+start,thickness],[size/2,size/2-2],[size-thickness-start,thickness],[size/2+gap/2,thickness],[size/2+gap/2,-30]]);
@@ -70,10 +70,10 @@ module mounted_nut(length){
 		tslot20(length,true);
 
 		for(i=[0:length/20]){
-			translate([6.0,1,i*20+8]) cube([10,2.3,6]);
+			#translate([5.5,1,i*20+8]) cube([10,2.3,6]);
 			// overhang fix
 			translate([12,1,5+i*20+4]) rotate(a=-45,v=[0,1,0]) cube([15,2.3,5.6]);
-			translate([6,1,i*20+5]){	
+			translate([5.5,1,i*20+5]){	
 				cube([6,2.3,6]);
 				translate([6/2,10,6/2]) rotate(a=90,v=[1,0,0]) cylinder(r=2.3,h=10); 
 			}
@@ -81,7 +81,26 @@ module mounted_nut(length){
 	}
 }
 
-//tslot20holes(150);
-//mounted_nut(40);
+
+module tslot20holesdouble(height){
+	union(){
+		tslot20holes(height);
+		translate([20,0,0]) tslot20holes(height);
+	}
+}
+
+//tslot20holesdouble(100);
+
+module mounted_nut_test_part(){
+	difference(){	
+		union(){
+			mounted_nut(60);
+			translate(v=[0,-31.5,0]) cube(size=[50,30,60]);
+		}
+		#translate([3,-35,0]) cube([44,30,60]);	
+	}
+}
+
+mounted_nut_test_part();
 
 
