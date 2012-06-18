@@ -101,6 +101,6 @@ module mounted_nut_test_part(){
 	}
 }
 
-mounted_nut_test_part();
+//mounted_nut_test_part();
 
 
