@@ -44,7 +44,31 @@ module frame(h=160){
  
 
 }
+module magazine(x,y,z){
+  translate([0,0,20]) rotate([0,0,0 ]) tslot20(z);
+  translate([0,y+20,20]) rotate([0,0,0 ]) tslot20(z);
+  translate([-x+20,0,20]) rotate([0,0,0 ]) tslot20(z);
+  translate([-x+20,y+20,20]) rotate([0,0,0 ]) tslot20(z);
+  
+  translate([-x+20,0,20]) rotate([0,90,0 ]) tslot20(x);
+  translate([-x+20,y+20,20]) rotate([0,90,0 ]) tslot20(x);
+  translate([0,20+y,0]) rotate([90,0,0 ]) tslot20(y);
+  translate([-x+20,20+y,0]) rotate([90,0,0 ]) tslot20(y);
+
+  translate([-x+20,0,20+z]) rotate([0,90,0 ]) tslot20(x);
+  translate([-x+20,y+20,20+z]) rotate([0,90,0 ]) tslot20(x);
+  translate([0,20+y,z]) rotate([90,0,0 ]) tslot20(y);
+  translate([-x+20,20+y,z]) rotate([90,0,0 ]) tslot20(y);
+
+} 
+
 frame();
+translate([-20,50,0]) magazine(500,120,900);
+
+
+for(i=[0:70]){
+   translate([-490,75,30+12.5*i]) wood_cut2();
+}
 
 translate([50,75,30]) wood_cut2();
 translate([50,230,30]) wood_cut3();
