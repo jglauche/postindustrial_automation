@@ -15,7 +15,7 @@ module wood_cut3(z=12){
     cube([225,225,z]);
 }
 
-module frame(h=200){
+module frame(h=160){
     
     translate([0,0,20]) rotate([0,90,0 ]) tslot20(600);
     translate([0,520,20]) rotate([0,90,0 ]) tslot20(600);
@@ -33,12 +33,20 @@ module frame(h=200){
     translate([580,520,20]) tslot20(h);
     translate([290,0,20]) tslot20(h);
     translate([290,520,20]) tslot20(h);
+
+    translate([0,210,20]) tslot20(h);
+    translate([580,210,20]) tslot20(h);
+    
+     
+    translate([0,50,40]) rotate([0,90,0 ]) tslot20(600);
+    translate([0,180,40]) rotate([0,90,0 ]) tslot20(600);
+    
  
 
 }
 frame();
 
-translate([50,50,0]) wood_cut2();
-translate([50,200,0]) wood_cut3();
+translate([50,75,30]) wood_cut2();
+translate([50,230,30]) wood_cut3();
 
 
