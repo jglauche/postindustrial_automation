@@ -55,13 +55,15 @@ module feeder_disc(){
 	difference(){
 		cylinder(r=31, h=bearing_height); 
 		// motor shaft
-		difference(){	
-			cylinder(r=2.5, h=bearing_height);
-			translate(v=[-5,1.5,0]) cube(size=[10,10,bearing_height]);	
+		translate([0,0,-1]) difference(){
+			cylinder(r=2.5, h=bearing_height+2);
+			translate(v=[-5,1.5,-1]) cube(size=[10,10,bearing_height+2]);
 		}
 
 		for (i = [0:3]) {
-			rotate(a=120*i, v=[0,0,1]) translate(v=[18,-2.5,0]) cylinder(r=(bearing_dia+margin)/2, h=bearing_height);
+			rotate(a=120*i, v=[0,0,1]) translate(v=[18,-2.5,-1]){
+                cylinder(r=(bearing_dia+margin)/2, h=bearing_height+1);
+            }
 		}	
 
 	}
