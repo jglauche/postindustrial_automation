@@ -1,6 +1,7 @@
 include <../../libs/publicDomainGearV1.1.scad>
 
-
+// mm_per_tooth = module * PI
+mm_per_tooth = 3.5*3.14159;
 
 
 module track_piece(){
@@ -14,7 +15,7 @@ module track_piece(){
 
        // cut the ends off the rack
        translate([5,y/2,z+6]) difference(){
-           rotate([90,0,0]) color([0.75,0.75,0.75]) rack(mm_per_tooth=3.5*3.14159,height=10, thickness=12, number_of_teeth=4);
+           rotate([90,0,0]) color([0.75,0.75,0.75]) rack(mm_per_tooth=mm_per_tooth,height=10, thickness=12, number_of_teeth=4);
            translate([38,-10,-7]) cube(size=[10,20,5]);
            translate([-15,-10,-7]) cube(size=[10,20,5]);
        }
@@ -35,7 +36,7 @@ module track_piece(){
 track_piece();
 translate([-44,0,0]) track_piece();
 
-//translate([0,17.5,32]) rotate([0,90,90]) color([1.00,0.75,0.75]) gear(mm_per_tooth=3.5*3.14159,thickness=10,number_of_teeth=12,hole_diameter=5);
+//translate([0,17.5,32]) rotate([0,90,90]) color([1.00,0.75,0.75]) gear(mm_per_tooth=mm_per_tooth,thickness=10,number_of_teeth=12,hole_diameter=5);
 
 
 
