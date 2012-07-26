@@ -6,16 +6,14 @@ include <../../libs/publicDomainGearV1.1.scad>
 module track_piece(){
     x = 43;
     y = 35;
-    z= 3.5;
+    z= 1.2;
 
 
     union(){
        cube([x,y,z]);
 
-       
-       translate([5,y/2,10]) 
        // cut the ends off the rack
-       difference(){
+       translate([5,y/2,z+6]) difference(){
            rotate([90,0,0]) color([0.75,0.75,0.75]) rack(mm_per_tooth=3.5*3.14159,height=10, thickness=12, number_of_teeth=4);
            translate([38,-10,-7]) cube(size=[10,20,5]);
            translate([-15,-10,-7]) cube(size=[10,20,5]);
