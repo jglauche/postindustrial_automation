@@ -8,7 +8,6 @@ count = 11;
 
 bearing_tube();
 module bearing_tube(){
-
 	difference(){
 		union(){		
 			cylinder(r=(bearing_dia+margin+wall_thickness)/2,h=count*bearing_height);

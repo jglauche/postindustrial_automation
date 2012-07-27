@@ -1,53 +1,34 @@
-include<../../mgs_prusa/nema_motor.scad>
-
+use <../../scadlib/gearmotor.scad>;
 bearing_dia = 22;
 margin = 1.5;
 bearing_height=7;
 
-//translate(v=[0,0,-40]) nema();
-
+motor_mount();
 feeder_disc();
+o=7;
 
+translate([0,0,o-16.5]) rotate(-90) gearmotor_pgm37dc12_77();
 
 // motor mount
-
-translate(v=[0,0,-16.5]){
-	difference(){
-		difference(){			
-			union(){
-				cylinder(r=31, h=16); 
-				translate(v=[0,0,(16+bearing_height+0.5)/2]) cube(size=[80,20,16+bearing_height+0.5], center=true);
-			}
-			// cut mouting part away
-			translate(v=[0,0,16]) cylinder(r=31+1, h=16); 
-			// side mounting bolts
-			translate(v=[35,0,0]) cylinder(r=2,h=80);
-			translate(v=[-35,0,0]) cylinder(r=2,h=80);
-
-			// eject part
-			translate(v=[0,30,8]) rotate(a=-30,v=[1,0,0]) cube(size=[25,50,16], center=true);
-		}				
-
-		// motor flange	
-		cylinder(r=12,h=3);
-			
-		translate(v=[0,0,3]) cylinder(r1=12, r2=5,h=13);
-		translate(v=[0,0,0]){	
-			translate([motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=80);
-			translate([motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=80);
-			translate([-motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=80);
-			translate([-motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=motor_mounting_hole_diam/2,h=80);
-		}
-		// holes for screw heads
-		translate(v=[0,0,2]){	
-			translate([motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=3,h=80);
-			translate([motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=3,h=80);
-			translate([-motor_mounting_hole_distance/2,motor_mounting_hole_distance/2,-0.5])cylinder(r=3,h=80);
-			translate([-motor_mounting_hole_distance/2,-motor_mounting_hole_distance/2,-0.5])cylinder(r=3,h=80);
-		}
-
-
-	}
+module motor_mount(){
+    translate(v=[0,0,-16.5]){
+        difference(){
+            union(){
+                cylinder(r=31, h=16); 
+                translate(v=[0,0,(16+bearing_height+0.5)/2]) cube(size=[80,20,16+bearing_height+0.5], center=true);
+            }
+            // cut mounting part away
+            translate(v=[0,0,16]) cylinder(r=31+1, h=16);
+            // side mounting bolts
+            for(i=[-1,1]) translate([35*i,0,-1]){
+                translate([0,0,3.2]) cylinder(r=3.5/2,h=80);
+                cylinder(r=6.2/2,h=3,$fn=6);
+            }
+            // eject part
+            translate(v=[0,30,8]) rotate([-30,0,0]) cube(size=[25,60,16], center=true);
+            rotate(-90) translate([0,0,o]) gearmotor_pgm37dc12_77(negative=true);
+        }
+    }
 }
 
 
@@ -55,12 +36,9 @@ module feeder_disc(){
 	difference(){
 		cylinder(r=31, h=bearing_height); 
 		// motor shaft
-		difference(){
-			translate([0,0,-1]) cylinder(r=2.5, h=bearing_height+2);
-			translate(v=[-5,1.5,-1]) cube(size=[10,10,bearing_height+1]);
-		}
-		for (i = [0:3]) {
-			rotate(a=120*i, v=[0,0,1]) translate(v=[18,-2.5,-1]){
+        translate([0,0,-1]) linear_extrude(height=bearing_height+2) rotate(-90) gearmotor_shaft_pgm37dc12_77();
+		for(i=[0:3]){
+			rotate(120*i) translate(v=[0,sqrt(330),-1]){
                 cylinder(r=(bearing_dia+margin)/2, h=bearing_height+1);
                 translate([0,0,bearing_height]) cylinder(r1=(bearing_dia+margin)/2,r2=(bearing_dia+margin)/2+2, h=2);
             }
