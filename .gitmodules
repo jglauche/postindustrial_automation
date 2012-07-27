@@ -1,0 +1,3 @@
+[submodule "scadlib"]
+	path = scadlib
+	url = https://github.com/FrozenFire/scadlib.git
