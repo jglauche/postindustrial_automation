@@ -1,7 +1,9 @@
-include <../../libs/publicDomainGearV1.1.scad>
+// Track piece for making a conveyor track
+// you will need a minimum of 10-11 to make a working closed loop.
+//
+// note that this is not very parametric right now
 
-// mm_per_tooth = module * PI
-mm_per_tooth = 5*3.14159;
+include <configuration.scad>
 
 $fn=16;
 module track_piece(){
@@ -65,7 +67,10 @@ module track_piece(){
     }    
 }
 
-track_piece();
+// uncomment this to make your track piece stl
+//track_piece();
+
+// this one is for checking the hinge
 //translate([-44-3,0,0]) track_piece();
 
 // rack to test the distances
