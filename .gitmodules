@@ -1,3 +1,6 @@
 [submodule "scadlib"]
 	path = scadlib
 	url = https://github.com/FrozenFire/scadlib.git
+[submodule "SolidPython"]
+	path = SolidPython
+	url = git://github.com/SolidCode/SolidPython.git
