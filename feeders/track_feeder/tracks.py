@@ -11,7 +11,8 @@ from pyopenscad import *
 
 use("configuration.scad")
 use("track.scad")
-
+use("../../libs/publicDomainGearV1.1.scad")
+mm_per_tooth = 5*3.14159;
 
 #d = track_piece()
 def rotate_origin(origin, rotation, obj):  
@@ -42,6 +43,12 @@ for i in a:
        x += math.sin(math.radians(90-i))*l    
        y += math.sin(math.radians(i*-1))*l
   
+g = gear(mm_per_tooth=mm_per_tooth,thickness=10,number_of_teeth=15,hole_diameter=7)
+g = translate([25,20,52])(rotate([90,0,0])(rotate([0,0,17])(g)))
 
 
 print scad_render(d)
+print scad_render(g)
+
+
+
