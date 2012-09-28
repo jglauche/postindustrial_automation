@@ -1,0 +1,40 @@
+Simple feeder by pushing/pulling things.
+
+Status: Prototype working.
+
+Estimated costs:
+
+- rod 0.20 EUR
+- microswitches: 0.20 EUR
+- motor: ~ 3 EUR in bulk (low estimate)
+- hardware: 0.10 EUR
+- printed parts (approx 100g): ~ 1.7 EUR
+
+Total: ~ 5.20 EUR
+
+
+This design is suitable for things that can be stacked in a row and can be pushed easily.
+It's capacity is limited by the lenght of the tube.
+
+Print out a tube, motor holder and a puller, and assemble.
+You need an M5 rod, M5 nut and some self tapping screws (about 2,9x13)
+
+Put a small object below the exit of the tube to have it mounted in a small angle.
+
+Bugs:
+- the motor currently used is far too big for the application. needs a small motor and a smaller mount to get everything falling down.
+- there needs to be a min endstop, as well as a max endstop since you want it to wind back when filling.
+- there is no active feedback on this thing. you need to weight the output. 
+- greasy things may not fall individually. Maybe need to cross-breed this with a wheel similar to the bearing feeder.
+
+
+Pros: 
+- cheap
+- easy to replicate
+- pretty small footprint 
+
+Cons:
+- small capacity
+- no feedback
+- problems with greasy things
+

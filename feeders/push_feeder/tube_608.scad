@@ -44,23 +44,65 @@ module motor_holder(x,y,z=30){
 module puller(x,y,z,inner_radius, rod_position){
     difference(){
         union(){
-            translate([0,-y,0]) cube([x,y,12]);
+            translate([0,-y,0]) cube([x,y,8]);
             translate([x/2,0,0]) cylinder(r=inner_radius, h=z);
         }
-        translate([x/2,-rod_position,-0.1]) cylinder(r=2.8,h=10);
-        #translate([x/2,-rod_position,-0.1+10.5]) cylinder(r=2.8,h=10);
-        translate([x/2,-rod_position+2,6]) cube([9.2,9.2*2,9.2*sqrt(3/4)+0.4], center = true);
+        translate([x/2,-rod_position,-0.1]) cylinder(r=2.8,h=3);
+        #translate([x/2,-rod_position,-0.1+6.5]) cylinder(r=2.8,h=10);
+        translate([x/2,-rod_position+2,4]) cube([8.2,9.2*2,4.3], center = true);
 
     }
 
 }
 
-//rotate([0,0,90])puller(24-1,40,35, 12-0.5, 33.5);
+// this doesn't work
+module nozzle(x,y,z, radius, object_width,clearance=0.3){
+    difference(){
+        translate([-x/2,-y/2,0]) cube([x,y,z]);
+    //    translate([0,0,-0.1]) cylinder(r=radius,h=object_width+clearance+0.1);
+        translate([-radius,-y/2,0]) cube([radius*2,y,object_width*1.5+clearance]);
+  #      translate([-radius,0,-2]) rotate([30,0,0]) cube([radius*2,y*2,object_width*2]);
 
-//translate([6,11.5,0]) puller(24-1,40,35, 12-0.5, 33.5);
-//motor_holder(35,30);
 
-round_item_storage(35,30,225,12);
-//translate([5+35,30,225-30]) rotate([180,180,0]) motor_holder(35,30);
+        translate([-18,-15,-5]) for(i=[0:z/10-1]) {
+            translate([-0.1,y-5,10+i*10]) rotate([0,90,0]) cylinder(r=1.5,h=14);
+            translate([x-13+0.1,y-5,10+i*10]) rotate([0,90,0]) cylinder(r=1.5,h=14);    
+        }
+                  
+    } 
+}
+
+module hole_piece(length){
+   difference(){
+       cube([length,10,4]);
+       for(i=[0:length/10-1]) {
+            translate([5+i*10,5,-5]) rotate([0,0,0]) cylinder(r=1.5,h=14);
+        }       
+   
+   }
+}
+
+
+//%translate([35/2,15,225]) nozzle(35,30,30,12,7);
+
+//%translate([6,11.5,0]) puller(24-1,40,35, 12-0.5, 33.5);
+
+//%round_item_storage(35,30,225,12);
+
+//%translate([5+35,30,225-30]) rotate([180,180,0]) motor_holder(35,30);
 
 //translate([x/2,inner_rad,0]) cylinder(r=11,h=7);
+
+
+// print stuff
+
+// puller
+//rotate([0,0,90])puller(24-1,40,35, 12-0.5, 33.5);
+// motor mount
+// motor_holder(35,30);
+
+//hole_piece(40);
+
+
+
+
