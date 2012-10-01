@@ -27,4 +27,22 @@ module micro_servo(){
 
 }
 
-micro_servo();
+// note: this is very abstract 
+module micro_servo_attachment_round_disk(){
+    color("white") difference(){
+        cylinder(r=12, h=1.7);
+        translate([9,0,-0.1]) cylinder(r=0.6,h=2);    
+        translate([-9,0,-0.1]) cylinder(r=0.6,h=2);    
+    }
+}
+
+module micro_servo_with_round_disk(){
+    union(){
+        micro_servo();
+        translate([6,6,31]) micro_servo_attachment_round_disk();
+    }
+
+}
+micro_servo_with_round_disk();
+
+
