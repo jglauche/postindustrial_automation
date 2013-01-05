@@ -22,13 +22,16 @@ def container(length):
     r-=translate([1.5,2.5,3])(cube([29,length-5,41]))
     return color("lime")(r)
 
+
+#res = rotate([90,0,0])(container(80))
+
 def tslot_spacer(spacing):
     r = cube([spacing+20,20,5])
     r+= cube([20,20,10])    
     r+= translate([spacing,0,0])(cube([20,20,10]))
     
-    bolt_hole = translate([0,0,5.3])(cylinder(r=2.7,h=5.1))
-    bolt_hole += cylinder(r=4.4,h=5.1);
+    bolt_hole = translate([0,0,5.3])(cylinder(r=2.8,h=5.1))
+    bolt_hole += cylinder(r=4.6,h=5.1);
     
     r-= translate([10,10,-0.1])(bolt_hole)
     r-= translate([10+spacing,10,-0.1])(bolt_hole)
@@ -38,19 +41,21 @@ def tslot_spacer(spacing):
 #res=tslot_spacer(55)
 
 def drive_bearing_holder():
-    r = cube([20,30,28])
-    
+    r = cube([10,30,28])
+    r += translate([0,20,23])(cube([20,25,5]))
+    r += translate([0,20,18])(cube([20,10,10]))
+        
     # bearing and shaft clearance
-    r -= translate([-0.1,15,14])(rotate([0,90,0])(cylinder(r=7,h=100)))
-    r -= translate([14.9,15,14])(rotate([0,90,0])(cylinder(r=11.2,h=7.2)))
+    r -= translate([-0.1,15,14])(rotate([0,90,0])(cylinder(r=9.5,h=100,segments=64)))
+    r -= translate([3,15,14])(rotate([0,90,0])(cylinder(r=11.2,h=20,segments=64)))
     
     # mounting hole 
-    r-= translate([10,15,-0.1])(rotate([0,0,0])(cylinder(r=2.7,h=100)))
-    r-= translate([10,15,-0.1])(rotate([0,0,0])(cylinder(r=4.4,h=25)))
+    r-= translate([10,38,-0.1])(rotate([0,0,0])(cylinder(r=2.7,h=100,segments=64)))
     
     
     return r
 #res = rotate([0,-90,0])(drive_bearing_holder())
+#res += translate([1,0,0])(mirror([1,0,0])(rotate([0,-90,0])(drive_bearing_holder())))
 
 def storage_shelf(length,spacing):	
     r = tslot20(length,0)
@@ -116,7 +121,6 @@ def conveyor_clamp(belt_width):
 #res = belt_roller(30, 8.6) 
 
 #res = conveyor_clamp(25) 
- 
  
  
 print scad_render(res)
